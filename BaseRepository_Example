@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Repositories;
+
+abstract class BaseRepository {
+
+    protected $model;
+
+    public function getById($id) {
+        return $this->model->findOrFail($id);
+    }
+
+    public function getByIdOrNew($id = 0){
+        return $this->model->findOrNew($id);
+    }
+
+    public function destroy($id){
+        $this->model->getById($id)->delete();
+    }
+
+    public function updateOrCreate($model, $values) {
+        $model->fill($values)->save();
+        return $model;
+    }
+
+    public function getAll() {
+        return $this->model->all();
+    }
+}
