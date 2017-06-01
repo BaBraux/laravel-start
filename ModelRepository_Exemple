@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Repositories;
+
+use App\User;
+
+class UserRepository extends BaseRepository {
+
+    protected $model;
+
+    public function __construct(User $user)
+    {
+        $this->model = $user;
+    }
+    
+    public function search($n,$search){
+        return $this->model
+            ->where(function ($q) use ($search) {
+                $q->where('name','like','%search%')
+                    ->orWhere('email','like','%search%');
+            })->paginate($n);
+    }
+}
