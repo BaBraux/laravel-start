@@ -2,6 +2,11 @@
 
 Some simple tips to start with laravel
 
+### PHP STORM ###
+
+Install plugin : Laravel plugin
+Install Theme : Material Theme UI
+
 #Install Laravel
 
 composer create-project laravel/laravel
